@@ -1,13 +1,13 @@
-import { useFache } from "../components/Featch"; // Ma'lumot olish uchun hook
-import { useParams } from "react-router-dom"; // URL'dan ID olish
+import { useFache } from "../components/Featch";
+import { useParams } from "react-router-dom";
 
 function SinglePage() {
   const { id } = useParams();
-  const url = "https://dummyjson.com/products"; // API manzili
-  const { data, loading, error } = useFache(url); // API dan ma'lumot olish
+  const url = "https://dummyjson.com/products";
+  const { data, loading, error } = useFache(url);
 
   if (!data || !data.products) {
-    return <p>Loading...</p>; // Ma'lumot yuklanmagan holatda
+    return <p>Loading...</p>;
   }
 
   const prod = data.products.find((item) => item.id === Number(id));
@@ -16,7 +16,6 @@ function SinglePage() {
     return (
       <>
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center p-5">
-          {/* Error Image */}
           <div className="mb-5">
             <img
               src="https://i.imgur.com/qIufhof.png"
@@ -25,7 +24,6 @@ function SinglePage() {
             />
           </div>
 
-          {/* Error Message */}
           <h1 className="text-4xl font-bold text-gray-800 mb-3">
             Oops! Page Not Found
           </h1>
@@ -34,7 +32,6 @@ function SinglePage() {
             removed or the URL might be incorrect.
           </p>
 
-          {/* Navigation Buttons */}
           <div className="flex gap-5">
             <Link
               to="/"
@@ -51,7 +48,7 @@ function SinglePage() {
           </div>
         </div>
       </>
-    ); // ID topilmagan holat
+    );
   }
 
   return (

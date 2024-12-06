@@ -14,6 +14,9 @@ function Home() {
   // console.log(products);
   const url = "https://dummyjson.com/products";
   const { data, loading, error } = useFache(url);
+  const addItem = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="continer w-full mx-auto p-10  mt-10 ">
@@ -38,7 +41,9 @@ function Home() {
                       <h2 className="card-title">{product.title}</h2>
                       <p>${product.price}</p>
                       <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button onClick={addItem} className="btn btn-primary">
+                          Buy Now
+                        </button>
                       </div>
                     </div>
                   </Link>
